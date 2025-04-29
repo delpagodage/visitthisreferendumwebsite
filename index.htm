@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9275053,document.createElement('script'))</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🗳️ ජනමත විමසීම - ඔබේ මනාපය පළ කරන්න</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --success: #4cc9f0;
+      --danger: #f72585;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --border-radius: 12px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      background-color: #f5f7fa;
+      color: var(--dark);
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+      color: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    header img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .party-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .party {
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      border-radius: var(--border-radius);
+      background-color: var(--light);
+      transition: var(--transition);
+      border: 1px solid #e9ecef;
+    }
+
+    .party-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .party-logo {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .party-name {
+      font-weight: 600;
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary);
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-danger {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .btn:disabled {
+      background-color: #adb5bd;
+      cursor: not-allowed;
+    }
+
+    .vote-count {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background-color: #e9ecef;
+      border-radius: 5px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #4361ee, #4cc9f0);
+      border-radius: 5px;
+      transition: width 0.5s ease;
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .comment-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ced4da;
+      border-radius: 50px;
+      font-family: 'Noto Sans Sinhala', sans-serif;
+      transition: var(--transition);
+    }
+
+    .comment-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comment-item {
+      background-color: var(--light);
+      padding: 12px;
+      border-radius: var(--border-radius);
+      position: relative;
+    }
+
+    .comment-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+
+    .comment-content {
+      font-size: 0.95rem;
+    }
+
+    .delete-comment {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: #6c757d;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .delete-comment:hover {
+      color: var(--danger);
+    }
+
+    .alert {
+      padding: 12px;
+      border-radius: var(--border-radius);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .alert-success {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+
+    .alert-danger {
+      background-color: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-left-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px;
+      color: #6c757d;
+      font-size: 0.85rem;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      justify-content: center;
+    }
+
+    .submit-container {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      
+      header {
+        padding: 12px;
+      }
+      
+      header img {
+        max-width: 80px;
+      }
+      
+      h1 {
+        font-size: 1.3rem;
+      }
+      
+      h2 {
+        font-size: 1.1rem;
+      }
+      
+      .party-info {
+        gap: 8px;
+      }
+      
+      .party-logo {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+      }
+      
+      .btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+      
+      .card {
+        padding: 12px;
+      }
+    }
+  </style>
+  <meta name="monetag" content="ec957815bc11f72c0b48ba7a3780367c">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhIXA37kjGB-VPizckFxj5ppcnkL4onRaqcT4rF9gVG8U3XMp_JIaAq3QdXZWCPXTer1OkSHv9duFDaZyxuaP-lzOdDkK00_UKWGFdTrHLinydutQWinhIQ8cECioP_jcIs_qkWzgdxyZD8Y7UFykhwXYg3ZYRMJeCtItrqIN7bnrv92hFG-bH5e8dyZfLE=w515-h515" alt="Voting Illustration">
+      <h1>🗳️ ඔබගේ මනාපය පළ කරන්න</h1>
+      <p>ශ්‍රී ලංකාවේ ප්‍රධාන දේශපාලන පක්ෂ සඳහා ඔබේ මනාපය දෙන්න</p>
+      
+      <div class="share-buttons">
+        <button class="btn btn-whatsapp" onclick="shareOnWhatsApp()">
+          <i class="fab fa-whatsapp"></i> මිතුරන් සමඟ බෙදාගන්න | Share
+        </button>
+      </div>
+    </header>
+
+    <div id="alertContainer"></div>
+
+    <div class="card">
+      <h2><i class="fas fa-check-circle"></i> මනාපය දෙන්න</h2>
+      <p>පහත ලැයිස්තුවෙන් ඔබ කැමති පක්ෂ 2ක් තෝරන්න (උපරිම මනාප 2ක්)</p>
+      <div id="partiesContainer" class="loading">
+        <div class="spinner"></div>
+      </div>
+      <div id="submitContainer" class="submit-container"></div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-chart-bar"></i> මනාප ප්‍රතිඵල</h2>
+      <div id="resultsContainer" class="loading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-comments"></i> අදහස් පළ කරන්න</h2>
+      <form id="commentForm" class="comment-form">
+        <input type="text" id="commentInput" class="comment-input" placeholder="ඔබේ අදහස් ඇතුළත් කරන්න..." required>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> යවන්න
+        </button>
+      </form>
+      <div id="commentList" class="comment-list loading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 ජනමත විමසීම. සියලුම හිමිකම් ඇවිරිණි.</p>
+      <p>මෙම වෙබ් අඩවිය ඔබගේ මිතුරන් සමඟ බෙදාගන්න:</p>
+      <div class="share-buttons">
+        <button class="btn btn-whatsapp" onclick="shareOnWhatsApp()">
+          <i class="fab fa-whatsapp"></i> මිතුරන් සමඟ බෙදාගන්න | Share
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+     apiKey: "AIzaSyDvZfKsRnKb4o1Ef-rnBSocj3d7uxI2g1M",
+     authDomain: "srilankavotingapp.firebaseapp.com",
+     databaseURL: "https://srilankavotingapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+     projectId: "srilankavotingapp",
+     storageBucket: "srilankavotingapp.firebasestorage.app",
+     messagingSenderId: "654463588275",
+     appId: "1:654463588275:web:d136673f952a22af8eddc6"
+   };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Party data with logos
+    const parties = [
+      { 
+        id: 1, 
+        name: "ජාතික ජන බලවේගය (NPP)", 
+        logo: "https://www.npp.lk/img/malimawa.webp",
+        color: "#FF0000"
+      },
+      { 
+        id: 2, 
+        name: "සමගි ජන බලවේගය (SJB)", 
+        logo: "https://thaka.bing.com/th/id/OIP.j1E8vWgVqvFwYghoqP2nEAHaHa?rs=1&pid=ImgDetMain",
+        color: "#0000FF"
+      },
+      { 
+        id: 3, 
+        name: "එක්සත් ජාතික පක්ෂය (UNP)", 
+        logo: "https://thaka.bing.com/th/id/OIP.xrLDVRY6uqnD5aimRF1H-AHaEK?rs=1&pid=ImgDetMain",
+        color: "#008000"
+      },
+      { 
+        id: 4, 
+        name: "ශ්‍රී ලංකා පොදුජන පෙරමුණ (SLPP)", 
+        logo: "https://adaderanaenglish.s3.amazonaws.com/1513865946-sri-lanka-podujana-peramuna.jpg",
+        color: "#FFA500"
+      },
+      { 
+        id: 5, 
+        name: "ඉලංගෙයි තමිල් අරසු කච්චි (ITAK)", 
+        logo: "https://th.bing.com/th/id/R.c22f29354deb7b2624015fb690f683db?rik=8TPV0V5J%2bSQDjQ&pid=ImgRaw&r=0",
+        color: "#800080"
+      }
+    ];
+
+    // Global variables
+    let selectedParties = [];
+    let userVoted = false;
+    let userId = generateUserId();
+    const siteUrl = window.location.href;
+    const shareText = "*මෙම ජනමත විමසීමේ වෙබ් අඩවියට පිවිස ඔබේ මනාපය පළ කරන්න❎,* *ඔබේ මිතුරන්ට මෙම පණිවිඩය Share කරන්න.* 📢🫂  2025";
+
+    // Generate a unique user ID (stored in localStorage)
+    function generateUserId() {
+      if (localStorage.getItem('voteAppUserId')) {
+        return localStorage.getItem('voteAppUserId');
+      }
+      const newId = 'user_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('voteAppUserId', newId);
+      return newId;
+    }
+
+    // Share on WhatsApp
+    function shareOnWhatsApp() {
+      const message = encodeURIComponent(`${shareText}\n\n${siteUrl}`);
+      window.open(`https://wa.me/?text=${message}`, '_blank');
+    }
+
+    // Check if user has already voted
+    function checkUserVoteStatus() {
+      database.ref('votes/' + userId).once('value').then((snapshot) => {
+        if (snapshot.exists()) {
+          userVoted = true;
+          selectedParties = snapshot.val().selectedParties || [];
+          showAlert('ඔබ දැනටමත් ඡන්දය දී ඇත. ස්තූතියි!', 'success');
+        }
+      });
+    }
+
+    // Show alert message
+    function showAlert(message, type) {
+      const alertContainer = document.getElementById('alertContainer');
+      const alert = document.createElement('div');
+      alert.className = `alert alert-${type}`;
+      alert.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        ${message}
+      `;
+      alertContainer.appendChild(alert);
+      
+      setTimeout(() => {
+        alert.remove();
+      }, 5000);
+    }
+
+    // Render parties for voting
+    function renderParties() {
+      const partiesContainer = document.getElementById('partiesContainer');
+      partiesContainer.innerHTML = '';
+      partiesContainer.className = 'party-list';
+      
+      parties.forEach(party => {
+        const isSelected = selectedParties.includes(party.id);
+        const isDisabled = (userVoted || (selectedParties.length >= 2 && !isSelected));
+        
+        const partyElement = document.createElement('div');
+        partyElement.className = 'party';
+        partyElement.innerHTML = `
+          <div class="party-info">
+            <img src="${party.logo}" alt="${party.name}" class="party-logo" style="border-color: ${party.color}">
+            <span class="party-name">${party.name}</span>
+          </div>
+          <button class="btn ${isSelected ? 'btn-success' : 'btn-primary'}" 
+                  onclick="handleVote(${party.id})" 
+                  ${isDisabled ? 'disabled' : ''}>
+            <i class="fas fa-${isSelected ? 'check' : 'vote-yea'}"></i>
+            ${isSelected ? 'තෝරා ඇත' : 'මනාපය දෙන්න'}
+          </button>
+        `;
+        partiesContainer.appendChild(partyElement);
+      });
+      
+      // Update submit button
+      updateSubmitButton();
+    }
+
+    // Update submit button based on current state
+    function updateSubmitButton() {
+      const submitContainer = document.getElementById('submitContainer');
+      submitContainer.innerHTML = '';
+      
+      if (userVoted) {
+        return;
+      }
+      
+      if (selectedParties.length > 0) {
+        const submitButton = document.createElement('button');
+        submitButton.className = 'btn btn-success';
+        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> මගේ මනාපය යවන්න';
+        submitButton.onclick = submitVote;
+        submitContainer.appendChild(submitButton);
+      }
+    }
+
+    // Handle vote action
+    function handleVote(partyId) {
+      if (userVoted) {
+        showAlert('ඔබ දැනටමත් ඡන්දය දී ඇත!', 'danger');
+        return;
+      }
+      
+      if (selectedParties.includes(partyId)) {
+        selectedParties = selectedParties.filter(id => id !== partyId);
+      } else {
+        if (selectedParties.length >= 2) {
+          showAlert('ඔබට පක්ෂ 2කට පමණක් මනාපය දිය හැකිය!', 'danger');
+          return;
+        }
+        selectedParties.push(partyId);
+      }
+      
+      renderParties();
+    }
+
+    // Submit vote to database
+    function submitVote() {
+      if (selectedParties.length === 0 || userVoted) return;
+      
+      // Update user's vote status
+      database.ref('votes/' + userId).set({
+        selectedParties: selectedParties,
+        timestamp: firebase.database.ServerValue.TIMESTAMP
+      }).then(() => {
+        userVoted = true;
+        showAlert('ඔබගේ මනාපය සාර්ථකව ලැබුණු බව තහවුරු විය. ස්තූතියි!', 'success');
+        
+        // Update vote counts for each selected party
+        selectedParties.forEach(partyId => {
+          const partyRef = database.ref('partyVotes/' + partyId);
+          partyRef.transaction((currentVotes) => {
+            return (currentVotes || 0) + 1;
+          });
+        });
+        
+        renderParties();
+        renderResults();
+      }).catch(error => {
+        showAlert('මනාපය යැවීමේදී දෝෂයක් ඇතිවිය: ' + error.message, 'danger');
+      });
+    }
+
+    // Render results with progress bars
+    function renderResults(snapshot) {
+      const resultsContainer = document.getElementById('resultsContainer');
+      resultsContainer.innerHTML = '';
+      resultsContainer.className = 'party-list';
+      
+      let totalVotes = 0;
+      const votesData = snapshot ? snapshot.val() : {};
+      
+      // Calculate total votes
+      parties.forEach(party => {
+        totalVotes += votesData[party.id] || 0;
+      });
+      
+      // Sort parties by vote count (descending)
+      const sortedParties = [...parties].sort((a, b) => {
+        return (votesData[b.id] || 0) - (votesData[a.id] || 0);
+      });
+      
+      // Create result items
+      sortedParties.forEach(party => {
+        const voteCount = votesData[party.id] || 0;
+        const percentage = totalVotes > 0 ? (voteCount / totalVotes * 100).toFixed(1) : 0;
+        
+        const resultItem = document.createElement('div');
+        resultItem.className = 'party';
+        resultItem.innerHTML = `
+          <div class="party-info">
+            <img src="${party.logo}" alt="${party.name}" class="party-logo" style="border-color: ${party.color}">
+            <span class="party-name">${party.name}</span>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: ${percentage}%; background: ${party.color}"></div>
+          </div>
+          <div class="vote-count">${voteCount} (${percentage}%)</div>
+        `;
+        resultsContainer.appendChild(resultItem);
+      });
+      
+      // Add total votes count
+      const totalElement = document.createElement('div');
+      totalElement.style.marginTop = '15px';
+      totalElement.style.fontWeight = 'bold';
+      totalElement.style.textAlign = 'center';
+      totalElement.textContent = `මුළු මනාප: ${totalVotes}`;
+      resultsContainer.appendChild(totalElement);
+    }
+
+    // Handle comment submission
+    function handleCommentSubmit(e) {
+      e.preventDefault();
+      const commentInput = document.getElementById('commentInput');
+      const comment = commentInput.value.trim();
+      
+      if (comment === '') return;
+      
+      const newComment = {
+        userId: userId,
+        userName: 'පරිශීලක', // In a real app, you'd have user authentication
+        content: comment,
+        timestamp: firebase.database.ServerValue.TIMESTAMP
+      };
+      
+      database.ref('comments').push(newComment)
+        .then(() => {
+          commentInput.value = '';
+        })
+        .catch(error => {
+          showAlert('අදහස් යැවීමේදී දෝෂයක් ඇතිවිය: ' + error.message, 'danger');
+        });
+    }
+
+    // Render comments
+    function renderComments(snapshot) {
+      const commentList = document.getElementById('commentList');
+      commentList.innerHTML = '';
+      commentList.className = 'comment-list';
+      
+      if (!snapshot.exists()) {
+        commentList.innerHTML = '<p>පළමු අදහස් එක් කරන්න!</p>';
+        return;
+      }
+      
+      const comments = [];
+      snapshot.forEach(childSnapshot => {
+        comments.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        });
+      });
+      
+      // Sort by timestamp (newest first)
+      comments.sort((a, b) => b.timestamp - a.timestamp);
+      
+      comments.forEach(comment => {
+        const commentDate = new Date(comment.timestamp);
+        const formattedDate = commentDate.toLocaleString('si-LK');
+        
+        const commentElement = document.createElement('div');
+        commentElement.className = 'comment-item';
+        commentElement.innerHTML = `
+          <div class="comment-meta">
+            <span><i class="fas fa-user"></i> ${comment.userName}</span>
+            <span><i class="fas fa-clock"></i> ${formattedDate}</span>
+          </div>
+          <div class="comment-content">${comment.content}</div>
+          ${comment.userId === userId ? 
+            `<i class="fas fa-trash delete-comment" onclick="deleteComment('${comment.id}')"></i>` : ''}
+        `;
+        commentList.appendChild(commentElement);
+      });
+    }
+
+    // Delete comment
+    function deleteComment(commentId) {
+      if (confirm('ඔබට මෙම අදහස මැකීමට අවශ්‍යද?')) {
+        database.ref('comments/' + commentId).remove()
+          .catch(error => {
+            showAlert('අදහස මැකීමේදී දෝෂයක් ඇතිවිය: ' + error.message, 'danger');
+          });
+      }
+    }
+
+    // Initialize the app
+    function initApp() {
+      // Check if user has already voted
+      checkUserVoteStatus();
+      
+      // Render parties
+      renderParties();
+      
+      // Set up real-time listeners
+      database.ref('partyVotes').on('value', renderResults);
+      database.ref('comments').on('value', renderComments);
+      
+      // Set up comment form
+      document.getElementById('commentForm').addEventListener('submit', handleCommentSubmit);
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
